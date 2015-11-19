@@ -38,13 +38,13 @@ USA
 10 minimum, 30 maximum.
 
 ### Requested scheduling
-Sunday (August 7th) morning, 8:30--11:30am. 
+Sunday (August 7th) morning, 8:00--11:30am. 
 
 ### Any additional A/V equipment (standard A/V setup is a screen, LCD projector, and laptop)
 We will need the standard setup, as well as wifi access for all participants.
 
 ### Room set-up desired: theater, conference, hollow square, rounds, other
-Conference set-up or rounds. Good access to electricity is required for each table as participants will be using laptops throughout.
+Classroom set-up or rounds. Good access to electricity is required for each table as participants will be using laptops throughout.
 
 ### Food and beverage requests
 No food or beverages requested.
