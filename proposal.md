@@ -10,7 +10,7 @@ We will focus in particular on when and how to use multivariate methods includin
 
 ### Summary sentence (appears in print only; 50 word max.)
 
-This workshop will provide participants with a hands-on opportunity to learn about and use functions within R' vegan package for analyzing ecological community data using constrained ordination and restricted permutation designs.
+This workshop will provide participants with a hands-on opportunity to learn about and use functions within R's vegan package for analyzing ecological community data using constrained ordination and restricted permutation designs.
 
 ### Name and contact information (affiliation, email) for the lead organizer and any co-organizers
 
