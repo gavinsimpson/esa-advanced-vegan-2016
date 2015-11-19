@@ -14,24 +14,24 @@ This workshop will provide participants with a hands-on opportunity to learn abo
 
 ### Name and contact information (affiliation, email) for the lead organizer and any co-organizers
 
-Gavin L. Simpson
-ORCID ID: [0000-0002-9084-8413](http://orcid.org/0000-0002-9084-8413)
+Gavin L. Simpson  
+ORCID ID: [0000-0002-9084-8413](http://orcid.org/0000-0002-9084-8413)  
 
-Institute of Environmental Change and Society
-University of Regina
-3737 Wascana Parkway
-Regina
-Saskatchewan
-Canada
+Institute of Environmental Change and Society  
+University of Regina  
+3737 Wascana Parkway  
+Regina  
+Saskatchewan  
+Canada  
 S4S 0A2
 
-Naupaka B. Zimmerman
-ORCID ID: [0000-0003-2168-6390](http://orcid.org/0000-0003-2168-6390)
+Naupaka B. Zimmerman  
+ORCID ID: [0000-0003-2168-6390](http://orcid.org/0000-0003-2168-6390)  
 
-University of Arizona
-1145 East 4th St.
-Tucson,
-AZ 85721
+University of Arizona  
+1145 East 4th St.  
+Tucson,  
+AZ 85721  
 USA
 
 ### Minimum and maximum number of participants (to assist in room assignment).
