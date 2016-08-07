@@ -1381,203 +1381,6 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 \end{frame}
 
-\begin{frame}{Diagnostics for constrained ordinations}
-
-\textbf{vegan} provides a series of diagnostics to help assess the model
-fit
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  \texttt{goodness()}
-\item
-  \texttt{inertcomp()}
-\item
-  \texttt{spenvcor()}
-\item
-  \texttt{intersetcor()}
-\item
-  \texttt{vif.caa()}
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Diagnostics for constrained ordinations \textbar{}
-goodness of fit}
-
-\texttt{goodness()} computes two goodness of fit statistics for species
-or sites
-
-Which goodness of fit measure is returned is controlled by argument
-\texttt{statistic}
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  \texttt{statistic\ =\ "explained} (default) gives the cumulative
-  proportion of variance explained by each axis
-\item
-  \texttt{statistic\ =\ "distance"} gives the residual distance between
-  the ``fitted'' location in constrained ordination space and the
-  location in the full dimensional space
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}[fragile]{Diagnostics for constrained ordinations
-\textbar{} goodness of fit}
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(}\KeywordTok{goodness}\NormalTok{(mods))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-                 CCA1        CCA2      CCA3
-Callvulg 0.0062471656 0.318907619 0.8254657
-Empenigr 0.1164701677 0.137604904 0.1953245
-Rhodtome 0.0999089739 0.169697909 0.1824153
-Vaccmyrt 0.2361482843 0.240516323 0.2406730
-Vaccviti 0.1523704591 0.156502301 0.2110550
-Pinusylv 0.0009244423 0.004802076 0.0060096
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(}\KeywordTok{goodness}\NormalTok{(mods, }\DataTypeTok{summarize =} \OtherTok{TRUE}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
- Callvulg  Empenigr  Rhodtome  Vaccmyrt  Vaccviti  Pinusylv 
-0.8254657 0.1953245 0.1824153 0.2406730 0.2110550 0.0060096 
-\end{verbatim}
-
-\normalsize
-
-\end{frame}
-
-\begin{frame}[fragile]{Diagnostics for constrained ordinations
-\textbar{} inertia decomposition}
-
-\texttt{inertcomp()} decomposes the variance in samples or species in
-partial, constrained, and unconstrained components
-
-Same two types of measure available by argument \texttt{statistic}
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  \texttt{statistic\ =\ "explained} (default) gives the decomposition in
-  terms of variance
-\item
-  \texttt{statistic\ =\ "distance"} gives decomposition in terms of the
-  the residual distance
-\item
-  Can output as proportions of total via \texttt{proportion\ =\ TRUE}
-\end{itemize}
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(}\KeywordTok{inertcomp}\NormalTok{(mods, }\DataTypeTok{proportional =} \OtherTok{TRUE}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-               CCA        CA
-Callvulg 0.8254657 0.1745343
-Empenigr 0.1953245 0.8046755
-Rhodtome 0.1824153 0.8175847
-Vaccmyrt 0.2406730 0.7593270
-Vaccviti 0.2110550 0.7889450
-Pinusylv 0.0060096 0.9939904
-\end{verbatim}
-
-\normalsize
-
-\end{frame}
-
-\begin{frame}[fragile]{Diagnostics for constrained ordinations
-\textbar{} species-environment correlations}
-
-\texttt{spenvcor()} returns the species-environment correlation
-
-The (weighted) correlation between the weighted average-based and the
-linear combination-based sets of site scores
-
-A \emph{poor} measure of goodness of fit. Sensitive to
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  outliers (like all correlations)
-\item
-  overfitting (using too many constraints)
-\end{itemize}
-
-Better models can have poorer species-environment correlations
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{spenvcor}\NormalTok{(mods)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-     CCA1      CCA2      CCA3 
-0.8554808 0.8132873 0.8792797 
-\end{verbatim}
-
-\normalsize
-
-\end{frame}
-
-\begin{frame}[fragile]{Diagnostics for constrained ordinations
-\textbar{} interset correlations}
-
-\texttt{intersetcor()} returns the interset correlations; the (weighted)
-correlation between the weighted average-based site scores and each
-constraint variable
-
-Another \emph{poor} diagnostic
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  correlation based
-\item
-  focuses on a single constraint--axis combination at a time
-\end{itemize}
-
-Vector fitting (\texttt{envfit()}) or biplot scores
-(\texttt{scores(model,\ display\ =\ "bp")}) are better alternatives
-
-\scriptsize
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{intersetcor}\NormalTok{(mods)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-         CCA1       CCA2      CCA3
-Al  0.7356151 -0.1302334 0.4259623
-P  -0.3589749 -0.6110772 0.4478933
-K  -0.3768462 -0.1339192 0.7760441
-\end{verbatim}
-
-\normalsize
-
-\end{frame}
-
 \section{Restricted permutation
 tests}\label{restricted-permutation-tests}
 
@@ -2603,6 +2406,205 @@ Model    126   1.8225 1.7425  0.002 **
 Residual 378   3.1378                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\normalsize
+
+\end{frame}
+
+\section{Other stuff}\label{other-stuff}
+
+\begin{frame}{Diagnostics for constrained ordinations}
+
+\textbf{vegan} provides a series of diagnostics to help assess the model
+fit
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \texttt{goodness()}
+\item
+  \texttt{inertcomp()}
+\item
+  \texttt{spenvcor()}
+\item
+  \texttt{intersetcor()}
+\item
+  \texttt{vif.caa()}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Diagnostics for constrained ordinations \textbar{}
+goodness of fit}
+
+\texttt{goodness()} computes two goodness of fit statistics for species
+or sites
+
+Which goodness of fit measure is returned is controlled by argument
+\texttt{statistic}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \texttt{statistic\ =\ "explained} (default) gives the cumulative
+  proportion of variance explained by each axis
+\item
+  \texttt{statistic\ =\ "distance"} gives the residual distance between
+  the ``fitted'' location in constrained ordination space and the
+  location in the full dimensional space
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Diagnostics for constrained ordinations
+\textbar{} goodness of fit}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{goodness}\NormalTok{(mods))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+                 CCA1        CCA2      CCA3
+Callvulg 0.0062471656 0.318907619 0.8254657
+Empenigr 0.1164701677 0.137604904 0.1953245
+Rhodtome 0.0999089739 0.169697909 0.1824153
+Vaccmyrt 0.2361482843 0.240516323 0.2406730
+Vaccviti 0.1523704591 0.156502301 0.2110550
+Pinusylv 0.0009244423 0.004802076 0.0060096
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{goodness}\NormalTok{(mods, }\DataTypeTok{summarize =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ Callvulg  Empenigr  Rhodtome  Vaccmyrt  Vaccviti  Pinusylv 
+0.8254657 0.1953245 0.1824153 0.2406730 0.2110550 0.0060096 
+\end{verbatim}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile]{Diagnostics for constrained ordinations
+\textbar{} inertia decomposition}
+
+\texttt{inertcomp()} decomposes the variance in samples or species in
+partial, constrained, and unconstrained components
+
+Same two types of measure available by argument \texttt{statistic}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \texttt{statistic\ =\ "explained} (default) gives the decomposition in
+  terms of variance
+\item
+  \texttt{statistic\ =\ "distance"} gives decomposition in terms of the
+  the residual distance
+\item
+  Can output as proportions of total via \texttt{proportion\ =\ TRUE}
+\end{itemize}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{inertcomp}\NormalTok{(mods, }\DataTypeTok{proportional =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+               CCA        CA
+Callvulg 0.8254657 0.1745343
+Empenigr 0.1953245 0.8046755
+Rhodtome 0.1824153 0.8175847
+Vaccmyrt 0.2406730 0.7593270
+Vaccviti 0.2110550 0.7889450
+Pinusylv 0.0060096 0.9939904
+\end{verbatim}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile]{Diagnostics for constrained ordinations
+\textbar{} species-environment correlations}
+
+\texttt{spenvcor()} returns the species-environment correlation
+
+The (weighted) correlation between the weighted average-based and the
+linear combination-based sets of site scores
+
+A \emph{poor} measure of goodness of fit. Sensitive to
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  outliers (like all correlations)
+\item
+  overfitting (using too many constraints)
+\end{itemize}
+
+Better models can have poorer species-environment correlations
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{spenvcor}\NormalTok{(mods)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     CCA1      CCA2      CCA3 
+0.8554808 0.8132873 0.8792797 
+\end{verbatim}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile]{Diagnostics for constrained ordinations
+\textbar{} interset correlations}
+
+\texttt{intersetcor()} returns the interset correlations; the (weighted)
+correlation between the weighted average-based site scores and each
+constraint variable
+
+Another \emph{poor} diagnostic
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  correlation based
+\item
+  focuses on a single constraint--axis combination at a time
+\end{itemize}
+
+Vector fitting (\texttt{envfit()}) or biplot scores
+(\texttt{scores(model,\ display\ =\ "bp")}) are better alternatives
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{intersetcor}\NormalTok{(mods)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+         CCA1       CCA2      CCA3
+Al  0.7356151 -0.1302334 0.4259623
+P  -0.3589749 -0.6110772 0.4478933
+K  -0.3768462 -0.1339192 0.7760441
 \end{verbatim}
 
 \normalsize

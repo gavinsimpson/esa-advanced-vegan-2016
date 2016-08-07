@@ -564,86 +564,6 @@ m5$anova
 ```
 \normalsize
 
-## Diagnostics for constrained ordinations
-
-**vegan** provides a series of diagnostics to help assess the model fit
-
- * `goodness()`
- * `inertcomp()`
- * `spenvcor()`
- * `intersetcor()`
- * `vif.caa()`
- 
-## Diagnostics for constrained ordinations | goodness of fit
-
-`goodness()` computes two goodness of fit statistics for species or sites
-
-Which goodness of fit measure is returned is controlled by argument `statistic`
-
- * `statistic = "explained` (default) gives the cumulative proportion of variance explained by each axis
- * `statistic = "distance"` gives the residual distance between the "fitted" location in constrained ordination space and the location in the full dimensional space
-
-## Diagnostics for constrained ordinations | goodness of fit
-
-\scriptsize
-```{r goodness}
-head(goodness(mods))
-head(goodness(mods, summarize = TRUE))
-```
-\normalsize
-
-## Diagnostics for constrained ordinations | inertia decomposition
-
-`inertcomp()` decomposes the variance in samples or species in partial, constrained, and unconstrained components
-
-Same two types of  measure available by argument `statistic`
-
- * `statistic = "explained` (default) gives the decomposition in terms of variance
- * `statistic = "distance"` gives decomposition in terms of the the residual distance
- * Can output as proportions of total via `proportion = TRUE`
-
-\scriptsize
-```{r inertcomp}
-head(inertcomp(mods, proportional = TRUE))
-```
-\normalsize
-
-## Diagnostics for constrained ordinations | species-environment correlations
-
-`spenvcor()` returns the species-environment correlation
-
-The (weighted) correlation between the weighted average-based and the linear combination-based sets of site scores
-
-A *poor* measure of goodness of fit. Sensitive to
-
- * outliers (like all correlations)
- * overfitting (using too many constraints)
-
-Better models can have poorer species-environment correlations
-
-\scriptsize
-```{r spenvcor}
-spenvcor(mods)
-```
-\normalsize
-
-## Diagnostics for constrained ordinations | interset correlations
-
-`intersetcor()` returns the interset correlations; the (weighted) correlation between the weighted average-based site scores and each constraint variable
-
-Another *poor* diagnostic
-
- * correlation based
- * focuses on a single constraint--axis combination at a time
-
-Vector fitting (`envfit()`) or biplot scores (`scores(model, display = "bp")`) are better alternatives
-
-\scriptsize
-```{r intersetcor}
-intersetcor(mods)
-```
-\normalsize
-
 # Restricted permutation tests
 
 ## Restricted permutation tests
@@ -1074,6 +994,90 @@ ctrl <- how(nperm = 499, within = Within(type = "free"),
 (sig.run <- anova(m.run, permutations = ctrl))
 ```
 \normalsize
+
+# Other stuff
+
+
+## Diagnostics for constrained ordinations
+
+**vegan** provides a series of diagnostics to help assess the model fit
+
+ * `goodness()`
+ * `inertcomp()`
+ * `spenvcor()`
+ * `intersetcor()`
+ * `vif.caa()`
+ 
+## Diagnostics for constrained ordinations | goodness of fit
+
+`goodness()` computes two goodness of fit statistics for species or sites
+
+Which goodness of fit measure is returned is controlled by argument `statistic`
+
+ * `statistic = "explained` (default) gives the cumulative proportion of variance explained by each axis
+ * `statistic = "distance"` gives the residual distance between the "fitted" location in constrained ordination space and the location in the full dimensional space
+
+## Diagnostics for constrained ordinations | goodness of fit
+
+\scriptsize
+```{r goodness}
+head(goodness(mods))
+head(goodness(mods, summarize = TRUE))
+```
+\normalsize
+
+## Diagnostics for constrained ordinations | inertia decomposition
+
+`inertcomp()` decomposes the variance in samples or species in partial, constrained, and unconstrained components
+
+Same two types of  measure available by argument `statistic`
+
+ * `statistic = "explained` (default) gives the decomposition in terms of variance
+ * `statistic = "distance"` gives decomposition in terms of the the residual distance
+ * Can output as proportions of total via `proportion = TRUE`
+
+\scriptsize
+```{r inertcomp}
+head(inertcomp(mods, proportional = TRUE))
+```
+\normalsize
+
+## Diagnostics for constrained ordinations | species-environment correlations
+
+`spenvcor()` returns the species-environment correlation
+
+The (weighted) correlation between the weighted average-based and the linear combination-based sets of site scores
+
+A *poor* measure of goodness of fit. Sensitive to
+
+ * outliers (like all correlations)
+ * overfitting (using too many constraints)
+
+Better models can have poorer species-environment correlations
+
+\scriptsize
+```{r spenvcor}
+spenvcor(mods)
+```
+\normalsize
+
+## Diagnostics for constrained ordinations | interset correlations
+
+`intersetcor()` returns the interset correlations; the (weighted) correlation between the weighted average-based site scores and each constraint variable
+
+Another *poor* diagnostic
+
+ * correlation based
+ * focuses on a single constraint--axis combination at a time
+
+Vector fitting (`envfit()`) or biplot scores (`scores(model, display = "bp")`) are better alternatives
+
+\scriptsize
+```{r intersetcor}
+intersetcor(mods)
+```
+\normalsize
+
 
 ## Re-use
 

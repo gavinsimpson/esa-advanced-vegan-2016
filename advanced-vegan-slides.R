@@ -123,19 +123,6 @@ plot(m4)
 m5 <- ordiR2step(lwr, scope = formula(m3), trace = FALSE)
 m5$anova
 
-## ----goodness------------------------------------------------------------
-head(goodness(mods))
-head(goodness(mods, summarize = TRUE))
-
-## ----inertcomp-----------------------------------------------------------
-head(inertcomp(mods, proportional = TRUE))
-
-## ----spenvcor------------------------------------------------------------
-spenvcor(mods)
-
-## ----intersetcor---------------------------------------------------------
-intersetcor(mods)
-
 ## ----shuffle-time-series-------------------------------------------------
 shuffle(10, control = how(within = Within(type = "series")))
 
@@ -263,4 +250,17 @@ set.seed(1)
 ctrl <- how(nperm = 499, within = Within(type = "free"),
             blocks = with(design, Reach))
 (sig.run <- anova(m.run, permutations = ctrl))
+
+## ----goodness------------------------------------------------------------
+head(goodness(mods))
+head(goodness(mods, summarize = TRUE))
+
+## ----inertcomp-----------------------------------------------------------
+head(inertcomp(mods, proportional = TRUE))
+
+## ----spenvcor------------------------------------------------------------
+spenvcor(mods)
+
+## ----intersetcor---------------------------------------------------------
+intersetcor(mods)
 
