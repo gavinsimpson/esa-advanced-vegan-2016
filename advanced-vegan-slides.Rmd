@@ -1086,6 +1086,9 @@ intersetcor(mods)
 ```
 \normalsize
 
+## Links
+
+I have several **vegan**-related posts on my blog. For a list of posts see [http://www.fromthebottomoftheheap.net/blog/]()
 
 ## Re-use
 
