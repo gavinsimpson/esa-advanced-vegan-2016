@@ -3,7 +3,7 @@
 Welcome to the GitHub repository for the workshop on advanced community ecology analyses using the `vegan` package at ESA 2016.
 
 **Location and time:**
-Location and time TBC
+Room 304, Ft Lauderdale Convention Center
 
 ## Organizers
 
