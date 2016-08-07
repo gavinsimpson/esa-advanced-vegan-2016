@@ -34,6 +34,14 @@ data(varespec)
 data(varechem)
 ```
 
+# Preliminaries
+
+## Preliminaries
+
+All slides and materials are online on Git hub:
+
+[https://github.com/gavinsimpson/esa-advanced-vegan-2016]()
+
 # Constrained Ordination
 
 ## Canonical Correspondence Analysis
